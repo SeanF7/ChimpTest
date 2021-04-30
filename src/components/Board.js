@@ -1,17 +1,17 @@
-import { render } from "@testing-library/react";
-import React from "react";
+import React, { useState } from "react";
 import Tile from "./Tile";
 
 var idat = 1;
-var tilesinplay = 4;
 
-function Board(props) {
+function Board() {
+  const [tilesinplay, setTilesInPlay] = useState(4);
+  
   const final = [];
 
-  var i;
+  let i:number;
   var j = 1;
 
-  var tilearray = [
+  let tilearray:Array<Number> = [
     1,
     2,
     3,
@@ -58,43 +58,39 @@ function Board(props) {
     if (!shuffled.includes(i)) {
       final.push(<Tile style={{ visibility: "hidden" }} />);
     } else if (j === 1) {
-      final.push(<Tile id={j} onClick={startGame} />);
-      j += 1;
+      final.push(<Tile id={shuffled.indexOf(i) + 1} onClick={startGame} />);
     } else {
-      final.push(<Tile id={j} onClick={checkClick} />);
-      j += 1;
+      final.push(<Tile id={shuffled.indexOf(i) + 1} onClick={checkClick} />);
     }
   }
-  console.log(shuffled);
   return <div className="board">{final}</div>;
+
+  function checkClick(params) {
+    if (Number.parseInt(params.target.id) === idat) {
+      params.target.style.visibility = "hidden";
+      idat += 1;
+    }
+    if (idat === tilesinplay + 1) {
+      GameEnded();
+    }
+  }
+
+  function GameEnded() {
+    Board();
+    setTilesInPlay(tilesinplay + 1);
+  }
+
+  function startGame(params) {
+    var eles = document.getElementsByClassName("tile");
+    var i;
+    for (i = 0; i < eles.length; i++) {
+      document.getElementsByClassName("tile")[i].innerHTML = "";
+    }
+    checkClick(params);
+  }
 }
 
 export default Board;
-
-function checkClick(params) {
-  if (Number.parseInt(params.target.id) === idat) {
-    params.target.style.visibility = "hidden";
-    idat += 1;
-  }
-  if (idat === tilesinplay + 1) {
-    GameEnded();
-  }
-}
-
-function GameEnded() {
-  tilesinplay += 1;
-  Board();
-  alert("Fin");
-}
-
-function startGame(params) {
-  var eles = document.getElementsByClassName("tile");
-  var i;
-  for (i = 0; i < eles.length; i++) {
-    document.getElementsByClassName("tile")[i].innerHTML = "";
-  }
-  checkClick(params);
-}
 
 function shuffle(array) {
   var currentIndex = array.length,
