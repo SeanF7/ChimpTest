@@ -1,11 +1,13 @@
+import React from "react";
 import Game from "./components/Game";
 import "./index.css";
-function App() {
+
+const App = () => {
   return (
     <div className="App">
-      <Game />
+      <Game/>
     </div>
   );
-}
+};
 
 export default App;

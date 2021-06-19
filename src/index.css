@@ -4,7 +4,6 @@
   height: 60px;
   font-size: 40px;
   color: rgb(170, 170, 170);
-  visibility: visible;
 }
 
 body {
@@ -17,6 +16,10 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: 90px;
+  display: grid;
+  grid-template: repeat(4, 60px) / repeat(8, 60px);
+  row-gap: 5px;
+  column-gap: 5px;
 }
 
 .tile:hover {
