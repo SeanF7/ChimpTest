@@ -4,7 +4,7 @@ interface BoardProps {
     tilesInPlay:any[];
 }
 
-export default function Board2({tilesInPlay}:BoardProps) {
+export default function Board({tilesInPlay}:BoardProps) {
 
     return (
         <div className="board">

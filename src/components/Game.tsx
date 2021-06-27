@@ -1,12 +1,16 @@
 import React, {useState} from 'react'
 import Board from './Board'
 import Tile from './Tile'
+import Popup from './GameOverPopup'
 
 export default function Game() {
 const [tilesInPlay, settilesInPlay] = useState(4)
+const [score, setScore] = useState(0)
+const [isPopupVisible, setPopupVisible] = useState(false);
   
 let correctClickID = 1;
 const tempTileArray: any[] = [];
+const tilesClickedArray: any[] = [];
 const shuffle = (array: number[]) => {
     let currentIndex = array.length,
       temporaryValue,
@@ -75,6 +79,7 @@ const checkClick = (e: any) => {
 
   if (Number.parseInt(e.target.id) === 1) {
     e.target.style.visibility = "hidden";
+    tilesClickedArray.push(e.target);
     let tiles = document.getElementsByClassName("tile")
     for(let i = 0; i < tiles.length ; i++){
       tiles[i].innerHTML = ""
@@ -83,11 +88,22 @@ const checkClick = (e: any) => {
 
   } else if (Number.parseInt(e.target.id) === tilesInPlay && correctClickID === tilesInPlay) {
     correctClickID = 1;
+    tilesClickedArray.push(e.target);
+    tilesClickedArray.forEach(button => {
+      button.style.visibility = "visible";
+      button.innerHTML = button.id;
+    });
+    setScore(tilesInPlay)
     settilesInPlay(tilesInPlay + 1);
 
   } else if (Number.parseInt(e.target.id) === correctClickID) {
     e.target.style.visibility = "hidden";
+    tilesClickedArray.push(e.target);
     correctClickID += 1;
+  } else{
+      setPopupVisible(true);
+      correctClickID = 1;
+      settilesInPlay(4);
   }
 };
 
@@ -123,11 +139,11 @@ for (let i: number = 1; i <= 40; i++) {
         );
     }
 }
-console.log(tempTileArray)
 
     return (
         <div>
             <Board tilesInPlay={tempTileArray}/>
+            <Popup trigger={isPopupVisible} score = {score} setTrigger={setPopupVisible}/>
         </div>
     )
 }
