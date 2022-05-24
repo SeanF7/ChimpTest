@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ChimpTest/static/css/main.d6b0143b.chunk.css",
+    "main.js": "/ChimpTest/static/js/main.489ba268.chunk.js",
+    "main.js.map": "/ChimpTest/static/js/main.489ba268.chunk.js.map",
+    "runtime-main.js": "/ChimpTest/static/js/runtime-main.f528ad99.js",
+    "runtime-main.js.map": "/ChimpTest/static/js/runtime-main.f528ad99.js.map",
+    "static/js/2.6ed832d6.chunk.js": "/ChimpTest/static/js/2.6ed832d6.chunk.js",
+    "static/js/2.6ed832d6.chunk.js.map": "/ChimpTest/static/js/2.6ed832d6.chunk.js.map",
+    "index.html": "/ChimpTest/index.html",
+    "static/css/main.d6b0143b.chunk.css.map": "/ChimpTest/static/css/main.d6b0143b.chunk.css.map",
+    "static/js/2.6ed832d6.chunk.js.LICENSE.txt": "/ChimpTest/static/js/2.6ed832d6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f528ad99.js",
+    "static/js/2.6ed832d6.chunk.js",
+    "static/css/main.d6b0143b.chunk.css",
+    "static/js/main.489ba268.chunk.js"
+  ]
+}
